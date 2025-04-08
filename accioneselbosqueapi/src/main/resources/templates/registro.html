@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <h2>Registro de Usuario</h2>
+    <form th:action="@{/registro}" method="post">
+        <input type="text" name="username" placeholder="Usuario" required><br>
+        <input type="password" name="password" placeholder="Contraseña" required><br>
+        <input type="text" name="role" placeholder="Rol (INVERSIONISTA/ADMIN/COMISIONISTA)" required><br>
+        <input type="text" name="nombre" placeholder="Nombre" required><br>
+        <input type="text" name="apellido" placeholder="Apellido" required><br>
+        <input type="text" name="dni" placeholder="DNI/Cédula" required><br>
+        <input type="email" name="email" placeholder="Correo electrónico" required><br>
+        <input type="text" name="celular" placeholder="Celular" required><br>
+        <button type="submit">Registrarse</button>
+    </form>
+    <a th:href="@{/login}">Volver al login</a>
+</body>
+</html>
