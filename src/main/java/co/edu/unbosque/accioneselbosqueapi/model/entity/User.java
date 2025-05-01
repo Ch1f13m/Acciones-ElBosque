@@ -1,0 +1,87 @@
+package co.edu.unbosque.accioneselbosqueapi.model.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
+/**
+ * Entidad que representa a un usuario dentro del sistema.
+ * Mapeada a la tabla "users" en la base de datos.
+ * Incluye campos personales, de autenticación y para recuperación de contraseña.
+ */
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class User {
+
+    /**
+     * Token temporal utilizado para la recuperación de contraseña.
+     */
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    /**
+     * Identificador único del usuario (clave primaria, autoincremental).
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    /**
+     * Nombre de usuario único para autenticación.
+     */
+    @Column(unique = true)
+    private String username;
+
+    /**
+     * Contraseña encriptada del usuario.
+     */
+    private String password;
+
+    /**
+     * Rol del usuario dentro del sistema (ej. INVESTOR, ADMIN, BROKER).
+     */
+    private String role;
+
+    /**
+     * Nombre real del usuario.
+     */
+    private String nombre;
+
+    /**
+     * Apellido del usuario.
+     */
+    private String apellido;
+
+    /**
+     * Número de documento de identificación.
+     */
+    private String dni;
+
+    /**
+     * Correo electrónico del usuario (también se usa para recuperación de contraseña).
+     */
+    private String email;
+
+    /**
+     * Número de celular del usuario.
+     */
+    private String celular;
+
+    /**
+     * Lista de mercados que el usuario quiere seguir (ej: NYSE, NASDAQ).
+     */
+    @ElementCollection
+    private List<String> mercadosInteres;
+
+    /**
+     * Preferencias de notificación del usuario.
+     */
+    private boolean notificacionCorreo = true;
+    private boolean notificacionSMS = false;
+    private boolean notificacionApp = false;
+}

@@ -1,0 +1,10 @@
+<configuration>
+    <appender name="FILE_JSON" class="ch.qos.logback.core.FileAppender">
+        <file>elk-logstash/logs/app-log.json</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE_JSON"/>
+    </root>
+</configuration>
